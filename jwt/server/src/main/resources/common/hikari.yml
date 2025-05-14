@@ -1,0 +1,15 @@
+# hikari.yml
+spring:
+  datasource:
+    hikari:
+      # 공통 HikariCP 설정
+      maximum-pool-size: 50
+      minimum-idle: 20
+      idle-timeout: 15000
+      max-lifetime: 98000
+      validation-timeout: 10000
+      connection-timeout: 30000
+      #        connection-test-query: SELECT 1
+      # multi-rows insert option
+      data-source-properties:
+        reWriteBatchedInserts: true

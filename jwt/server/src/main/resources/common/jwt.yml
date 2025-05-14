@@ -1,0 +1,7 @@
+jwt:
+  # $ openssl rand -base64 32
+  # your-256-bit-secret-key-base64-encoded
+  secret-key: "ymyzWpOOhXnd/ElWJ8ZUKnr3+IDfZcQhFuoaM5L6AJI="  # openssl rand -base64 32
+  access-token-expiration: 3600  # 토큰 유효시간(초)
+  refresh-token-expiration: 604800  # 토큰 유효시간(초)
+  issuer-uri: http://localhost:8080

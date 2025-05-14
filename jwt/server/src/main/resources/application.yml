@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: server
+  profiles:
+    active: dev
+  jackson:
+    default-property-inclusion: non-null
+  config:
+    import:
+      - classpath:common/jasypt.yml
+      - classpath:common/jpa.yml
+      - classpath:common/hikari.yml
+      - classpath:common/jwt.yml
+      - classpath:common/security.yml
+      - classpath:smtp/smtp.yml
+      - classpath:datasource/h2.yml
+      - classpath:social/oauth2.yml
+      - classpath:secret/secrets.yml
+
+logging:
+  level:
+    root: INFO
+    org.springframework: WARN
+    com.korutil.server: DEBUG
+    org.springframework.jdbc.core: DEBUG      # JDBC 로그 출력
+    org.hibernate.SQL: DEBUG                  # Hibernate SQL 로그 출력
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # SQL 파라미터 바인딩 로그logging:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+
+base-url: http://localhost:8080
+front-url: http://localhost:8080

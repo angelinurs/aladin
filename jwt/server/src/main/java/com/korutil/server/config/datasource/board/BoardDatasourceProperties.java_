@@ -1,0 +1,11 @@
+package com.korutil.server.config.datasource.board;
+
+import org.springframework.boot.context.properties.ConfigurationProperties;
+
+@ConfigurationProperties("spring.board.datasource")
+public record BoardDatasourceProperties(
+        String jdbcUrl,
+        String username,
+        String password,
+        String driverClassName
+) {}

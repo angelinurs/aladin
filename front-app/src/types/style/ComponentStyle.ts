@@ -1,0 +1,1 @@
+export const inputGroupTextWidth ={flex: '0 0 115px', justifyContent: 'left' };

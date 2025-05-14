@@ -1,0 +1,35 @@
+spring:
+  # 각 데이터소스별 설정
+  user:
+    datasource:
+      driverClassName: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL
+      username: naru
+      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
+#        password: naru0914
+#
+#  board:
+#    datasource:
+#      driverClassName: org.h2.Driver
+#      jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL;SCHEMA=board
+#      username: naru
+#      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
+##        password: naru0914
+
+  h2:
+    console:
+      enabled: true
+      jdbc-url: jdbc:h2:mem:test
+      # 127.0.0.1:18080/h2-console
+      username: naru
+      password: naru0914
+      path: /h2-console
+      settings:
+        web-allow-others: true
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath*:datasource/dummy-sql/h2-scheme.sql
+  #      data-locations: classpath*:datasource/dummy-sql/h2-import.sql
+
