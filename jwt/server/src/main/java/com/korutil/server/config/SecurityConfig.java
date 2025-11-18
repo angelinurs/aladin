@@ -2,6 +2,7 @@ package com.korutil.server.config;
 
 import com.korutil.server.component.jwt.CustomAuthenticationProvider;
 import com.korutil.server.dto.jwt.CustomClaimNames;
+import com.korutil.server.handler.IpLoggingAuthenticationEntryPoint;
 import com.korutil.server.handler.social.CustomOAuthLogoutSuccessHandler;
 import com.korutil.server.handler.social.OAuth2LoginFailureHandler;
 import com.korutil.server.handler.social.OAuth2SuccessHandler;
@@ -36,6 +37,8 @@ public class SecurityConfig {
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
     private final CustomOAuthLogoutSuccessHandler customOAuthLogoutSuccessHandler;
     private final OAuth2LoginFailureHandler oAuth2LoginFailureHandler;
+
+    private final IpLoggingAuthenticationEntryPoint ipLoggingAuthenticationEntryPoint;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() { // security를 적용하지 않을 리소스
@@ -100,6 +103,10 @@ public class SecurityConfig {
                 // 6. H2 콘솔의 세션 문제 해결을 위한 설정
                 .headers(headers -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                )
+                // 5. 인증되지 않은 요청(Security 인증 실패) 시 실제 요청 정보를 로그로 남기는 EntryPoint
+                .exceptionHandling(eh -> eh
+                        .authenticationEntryPoint(ipLoggingAuthenticationEntryPoint)  // 여기 추가!
                 );
 
         return http.build();

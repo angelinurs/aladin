@@ -1,4 +1,4 @@
-package com.medicrm_ai.uploader.handler;
+package com.korutil.server.handler;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
