@@ -14,15 +14,15 @@ server:
 cors:
   allowed-origins:
     # 회사 네트워크
-    - "http://175.116.62.42"
+#    - "http://175.116.62.42"
     # ✅ HTTPS origin 추가 (ALB에서 보내는 실제 origin)
-    - "https://medis.api.medicrm-ai.com"
-    - "http://medis.api.medicrm-ai.com"
-    - "https://landing.medicrm-ai.com"  # 직접 접근용
-    - "http://landing.medicrm-ai.com"
-    - "https://www.sc301.co.kr"
-    - "https://*.medicrm-ai.com"
-    - "http://*.medicrm-ai.com"
+    - "https://main.api.amurlab.com"
+    - "http://console.api.amurlab.com"
+    - "https://drive.amurlab.com"  # 직접 접근용
+    - "http://traplan.amurlab.com"
+    - "https://www.amurlab.com"
+    - "https://*.amurlab.com"
+    - "http://*.amurlab.com"
   allowed-methods:
     - "GET"
     - "POST"
