@@ -1,35 +1,39 @@
 spring:
   # 각 데이터소스별 설정
-  user:
+  supabase:
     datasource:
-      driverClassName: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL
-      username: naru
-      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
-#        password: naru0914
-#
-#  board:
-#    datasource:
-#      driverClassName: org.h2.Driver
-#      jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL;SCHEMA=board
-#      username: naru
-#      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
-##        password: naru0914
+      hikari:
+        driver-class-name: org.postgresql.Driver
+        jdbc-url: jdbc:postgresql://aws-1-ap-northeast-2.pooler.supabase.com:6543/postgres
+        username: ENC(G+yR97YEsLEjbwdEtdjgwKsWohdeZf+zEKd6OXKHEZdADm2eY19MsisSnlkaBIcSidwFBSG3P2Dpdx6bbHymiw==)
+        password: ENC(LIyV8PzZhojndD602dVvYDnTS8llzA9sG/S6yu19bcIIQ0FgiMwELB+weHrDTs9LU4tTJp31Q/StY9DJkkURAg==)
 
-  h2:
-    console:
-      enabled: true
-      jdbc-url: jdbc:h2:mem:test
-      # 127.0.0.1:18080/h2-console
-      username: naru
-      password: naru0914
-      path: /h2-console
-      settings:
-        web-allow-others: true
+        # Pool 크기 설정
+        maximum-pool-size: 20          # 50 -> 20 (과도한 연결 방지)
+        minimum-idle: 5                # 20 -> 5 (최소 유지 연결 수)
 
-  sql:
-    init:
-      mode: always
-      schema-locations: classpath*:datasource/dummy-sql/h2-scheme.sql
-  #      data-locations: classpath*:datasource/dummy-sql/h2-import.sql
+        # 타임아웃 설정
+        connection-timeout: 30000      # 30초 (연결 획득 대기시간)
+        idle-timeout: 600000           # 10분 (유휴 연결 유지시간)
+        max-lifetime: 1800000          # 30분 (연결 최대 생존시간)
+        validation-timeout: 5000       # 5초 (연결 검증 타임아웃)
+        keepalive-time: 300000  # 5분 마다 커넥션 확인
+
+        # 연결 검증 (PostgreSQL 필수)
+        connection-test-query: SELECT 1
+
+        # 성능 최적화
+        data-source-properties:
+          reWriteBatchedInserts: true
+          # PostgreSQL 추가 최적화
+          cachePrepStmts: true
+          prepStmtCacheSize: 250
+          prepStmtCacheSqlLimit: 2048
+          useServerPrepStmts: true
+          useLocalSessionState: true
+          rewriteBatchedStatements: true
+          cacheResultSetMetadata: true
+          cacheServerConfiguration: true
+          elideSetAutoCommits: true
+          maintainTimeStats: false
 
