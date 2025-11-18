@@ -1,4 +1,4 @@
-package com.korutil.server.dao.user;
+package com.korutil.server.repository.dao.user;
 
 import com.korutil.server.dto.user.UserCredentialsDto;
 import com.korutil.server.domain.user.UserCredentialsEntity;
