@@ -1,5 +1,6 @@
 springdoc:
   # default url:  http://localhost:8080/swagger-ui/index.html
+  # 얘 없어도 잘 돌아감.
   swagger-ui:
     groups-order: DESC
     tags-sorter: alpha
@@ -19,4 +20,4 @@ springdoc:
   model-and-view-allowed: true
   #  paths-to-match:
   #    - /api/v1/**
-  packages-to-scan: "kr.co.sc301.medis.crm.controller"
+  packages-to-scan: "com.korutil.server.controller"
