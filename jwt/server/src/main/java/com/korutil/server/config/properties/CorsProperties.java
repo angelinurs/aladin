@@ -1,4 +1,4 @@
-package com.medicrm_ai.uploader.config.properties;
+package com.korutil.server.config.properties;
 
 import lombok.Data;
 import lombok.ToString;
