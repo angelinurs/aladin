@@ -18,6 +18,8 @@ public class MailService {
 
     private final JavaMailSender javaMailSender;
 
+    @Value("${spring.mail.from-custom-domain}")
+    private String mailCustomDomain;
     @Value("${spring.mail.username}")
     private String mailFrom;
     @Value("${spring.mail.host}")
@@ -38,7 +40,8 @@ public class MailService {
         simpleMailMessage.setTo( mailTo );
         simpleMailMessage.setSubject( subject );
         simpleMailMessage.setText( token );
-        simpleMailMessage.setFrom(mailFrom + "@" + getHost());
+//        simpleMailMessage.setFrom(mailFrom + "@" + getHost());
+        simpleMailMessage.setFrom(mailCustomDomain);
 
         javaMailSender.send(simpleMailMessage);
     }

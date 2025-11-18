@@ -12,7 +12,8 @@ spring:
       - classpath:common/hikari.yml
       - classpath:common/jwt.yml
       - classpath:common/security.yml
-      - classpath:smtp/smtp.yml
+#      - classpath:smtp/smtp.yml
+      - classpath:smtp/smtp-daum-smart-work.yml
       - classpath:datasource/h2.yml
       - classpath:social/oauth2.yml
       - classpath:secret/secrets.yml
