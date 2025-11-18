@@ -1,6 +1,6 @@
 package com.korutil.server.service;
 
-import com.korutil.server.dao.user.LoginHistoryDao;
+import com.korutil.server.repository.dao.user.LoginHistoryDao;
 import com.korutil.server.dto.jwt.JwtTokenDto;
 import com.korutil.server.dto.user.LoginHistoryDto;
 import com.korutil.server.util.CustomLocalDateTimeUtils;

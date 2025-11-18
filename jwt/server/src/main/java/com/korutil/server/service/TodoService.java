@@ -1,12 +1,10 @@
 package com.korutil.server.service;
 
-import com.korutil.server.dao.user.TodoDao;
+import com.korutil.server.repository.dao.user.TodoDao;
 import com.korutil.server.dto.common.CommonApiResponse;
-import com.korutil.server.dto.jwt.JwtTokenDto;
 import com.korutil.server.dto.todo.TodoDto;
 import com.korutil.server.dto.todo.TodoSearchDto;
 import com.korutil.server.dto.todo.record.TodoResponse;
-import com.korutil.server.dto.todo.record.TodoSearchRequest;
 import com.korutil.server.dto.todo.record.TodoSearchResponse;
 import com.korutil.server.service.security.JwtTokenService;
 import lombok.RequiredArgsConstructor;
