@@ -1,14 +1,19 @@
 package com.korutil.server.config;
 
 import com.korutil.server.component.jwt.CustomAuthenticationProvider;
+import com.korutil.server.config.properties.CorsProperties;
 import com.korutil.server.dto.jwt.CustomClaimNames;
+import com.korutil.server.handler.IpLoggingAuthenticationEntryPoint;
 import com.korutil.server.handler.social.CustomOAuthLogoutSuccessHandler;
 import com.korutil.server.handler.social.OAuth2LoginFailureHandler;
 import com.korutil.server.handler.social.OAuth2SuccessHandler;
 import com.korutil.server.service.oauth.UserOAuth2Service;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.DependsOn;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -26,16 +31,23 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import java.util.List;
 
+@Slf4j
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
+@DependsOn("corsProperties")
+@AutoConfigureAfter(CorsProperties.class)
 public class SecurityConfig {
+
+    private final CorsProperties corsProperties;
 
     private final CustomAuthenticationProvider customAuthenticationProvider;
     private final UserOAuth2Service userOAuth2Service;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
     private final CustomOAuthLogoutSuccessHandler customOAuthLogoutSuccessHandler;
     private final OAuth2LoginFailureHandler oAuth2LoginFailureHandler;
+
+    private final IpLoggingAuthenticationEntryPoint ipLoggingAuthenticationEntryPoint;
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() { // security를 적용하지 않을 리소스
@@ -100,6 +112,10 @@ public class SecurityConfig {
                 // 6. H2 콘솔의 세션 문제 해결을 위한 설정
                 .headers(headers -> headers
                         .addHeaderWriter(new XFrameOptionsHeaderWriter(XFrameOptionsHeaderWriter.XFrameOptionsMode.SAMEORIGIN))
+                )
+                // 5. 인증되지 않은 요청(Security 인증 실패) 시 실제 요청 정보를 로그로 남기는 EntryPoint
+                .exceptionHandling(eh -> eh
+                        .authenticationEntryPoint(ipLoggingAuthenticationEntryPoint)  // 여기 추가!
                 );
 
         return http.build();
@@ -108,16 +124,44 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
-        config.setAllowedMethods(List.of("GET","POST","PATCH","PUT","DELETE","OPTIONS"));
-        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
-        config.setAllowCredentials(true);
+
+        // CorsProperties 에서 설정값 가져오기
+        config.setAllowCredentials(corsProperties.isAllowCredentials());
+        config.setAllowedMethods(corsProperties.getAllowedMethods());
+        config.setAllowedHeaders(corsProperties.getAllowedHeaders());
+        config.setExposedHeaders(corsProperties.getExposedHeaders());
+
+        // 프로필에 따른 Origin 설정
+//        if(isProfileActive("dev") || isProfileActive("local")) {
+//            config.setAllowedOriginPatterns(corsProperties.getAllowedOrigins());
+//        } else {
+//            config.setAllowedOrigins(corsProperties.getAllowedOrigins());
+//        }
+        // aws alb 환경에서는 아래 패턴 사용
+        config.setAllowedOriginPatterns(corsProperties.getAllowedOrigins());
+
+        // Preflight 요청 캐시 시간 설정
+        config.setMaxAge(3600L);
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", config);
+
         return source;
     }
+
+//    @Bean
+//    public CorsConfigurationSource corsConfigurationSource() {
+//        CorsConfiguration config = new CorsConfiguration();
+//        config.setAllowCredentials(true);
+//        config.setAllowedOrigins(List.of("http://localhost:3000"));
+//        config.setAllowedMethods(List.of("GET","POST","PATCH","PUT","DELETE","OPTIONS"));
+//        config.setAllowedHeaders(List.of("Authorization", "Content-Type"));
+//        config.setAllowCredentials(true);
+//
+//        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+//        source.registerCorsConfiguration("/**", config);
+//        return source;
+//    }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {

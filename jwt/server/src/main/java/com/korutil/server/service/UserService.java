@@ -1,6 +1,5 @@
 package com.korutil.server.service;
 
-import com.korutil.server.dao.user.*;
 import com.korutil.server.domain.user.UserEntity;
 import com.korutil.server.dto.common.CommonApiResponse;
 import com.korutil.server.dto.jwt.JwtTokenDto;
@@ -9,6 +8,7 @@ import com.korutil.server.oauth.OAuthProvider;
 import com.korutil.server.dto.user.*;
 import com.korutil.server.dto.user.constant.ROLE;
 import com.korutil.server.dto.user.record.UserResponse;
+import com.korutil.server.repository.dao.user.*;
 import com.korutil.server.repository.jpa.user.UserRepository;
 import com.korutil.server.service.security.JwtTokenService;
 import com.korutil.server.util.PasswordUtils;
@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Map;
 
 @AllArgsConstructor
 @Service

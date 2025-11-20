@@ -1,0 +1,19 @@
+${AnsiColor.BRIGHT_RED}      █████      ${AnsiColor.BRIGHT_GREEN}██████      ${AnsiColor.BRIGHT_BLUE}██
+${AnsiColor.BRIGHT_RED}     ██   ██     ${AnsiColor.BRIGHT_GREEN}██   ██     ${AnsiColor.BRIGHT_BLUE}██
+${AnsiColor.BRIGHT_RED}     ███████     ${AnsiColor.BRIGHT_GREEN}██████      ${AnsiColor.BRIGHT_BLUE}██
+${AnsiColor.BRIGHT_RED}     ██   ██     ${AnsiColor.BRIGHT_GREEN}██          ${AnsiColor.BRIGHT_BLUE}██
+${AnsiColor.BRIGHT_RED}     ██   ██     ${AnsiColor.BRIGHT_GREEN}██          ${AnsiColor.BRIGHT_BLUE}██
+
+${AnsiColor.BRIGHT_YELLOW} ██████     ${AnsiColor.BRIGHT_MAGENTA} ██████     ${AnsiColor.BRIGHT_CYAN} ██████     ${AnsiColor.BRIGHT_YELLOW} ██████
+${AnsiColor.BRIGHT_YELLOW} ██   ██    ${AnsiColor.BRIGHT_MAGENTA}██    ██    ${AnsiColor.BRIGHT_CYAN}██          ${AnsiColor.BRIGHT_YELLOW}██
+${AnsiColor.BRIGHT_YELLOW} ██████     ${AnsiColor.BRIGHT_MAGENTA}████████    ${AnsiColor.BRIGHT_CYAN} ██████     ${AnsiColor.BRIGHT_YELLOW}██████
+${AnsiColor.BRIGHT_YELLOW} ██   ██    ${AnsiColor.BRIGHT_MAGENTA}██    ██    ${AnsiColor.BRIGHT_CYAN}      ██    ${AnsiColor.BRIGHT_YELLOW}██
+${AnsiColor.BRIGHT_YELLOW} ██████     ${AnsiColor.BRIGHT_MAGENTA}██    ██    ${AnsiColor.BRIGHT_CYAN} ██████     ${AnsiColor.BRIGHT_YELLOW}██████
+${AnsiColor.DEFAULT}
+${AnsiColor.BRIGHT_GREEN}============================================================
+ 🚀 BASE API Server Starting...
+ 📅 ${application.formatted-version}
+ 🌍 Environment: ${spring.profiles.active:development}
+ ☕ Java: ${java.version}
+ 🍃 Spring Boot: ${spring-boot.version}
+============================================================${AnsiColor.DEFAULT}

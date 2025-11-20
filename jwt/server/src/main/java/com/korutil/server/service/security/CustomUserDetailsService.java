@@ -1,7 +1,7 @@
 package com.korutil.server.service.security;
 
-import com.korutil.server.dao.user.UserCredentialsDao;
-import com.korutil.server.dao.user.UserDao;
+import com.korutil.server.repository.dao.user.UserCredentialsDao;
+import com.korutil.server.repository.dao.user.UserDao;
 import com.korutil.server.dto.user.UserCredentialsDto;
 import com.korutil.server.dto.user.UserDto;
 import lombok.RequiredArgsConstructor;

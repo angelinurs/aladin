@@ -1,5 +1,5 @@
 jasypt:
   encryptor:
-    password: korutil  # 암복호화 키
+    password: amurlab  # 암복호화 키
     algorithm: PBEWithHMACSHA512AndAES_256  # 강력한 알고리즘
     iv-generator-classname: org.jasypt.iv.RandomIvGenerator

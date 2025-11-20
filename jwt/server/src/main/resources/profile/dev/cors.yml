@@ -1,0 +1,23 @@
+cors:
+  allowed-origins:
+    # developer
+    - "http://localhost:*"
+    - "http://127.0.0.1:*"
+    - "http://localhost:3000"
+    # 사내 네트워크
+    - "http://192.168.0.*:*"
+    # 로컬 파일 시스템 (추가)
+    - "file://*"
+    - "null"
+  allowed-methods:
+    - "GET"
+    - "POST"
+    - "PUT"
+    - "PATCH"
+    - "DELETE"
+    - "OPTIONS"
+  allowed-headers:
+    - "*"
+  exposed-headers:
+    - "access-type"
+  allow-credentials: true

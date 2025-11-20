@@ -1,0 +1,27 @@
+spring:
+  devtools:
+    add-properties: false
+  config:
+    import:
+      - classpath:profile/dev/cors.yml
+
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+logging:
+  level:
+    root: INFO
+    kr.co.sc301.medis.crm: DEBUG                    # 애플리케이션 로그만 DEBUG
+    org.springframework: WARN                       # Spring 프레임워크는 WARN 이상만
+    org.springframework.jdbc.core: INFO             # JDBC 로그를 INFO로 낮춤
+    org.springframework.security: WARN              # Security 로그 줄임
+    org.springframework.web: WARN                   # Web 로그 줄임
+#    org.hibernate.SQL: DEBUG                       # SQL 쿼리만 출력
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE  # 파라미터 바인딩은 주석 처리
+
+server:
+  port: ${variable.port.dev}
+
+base-url: http://localhost:${variable.port.dev}
+front-url: http://localhost:8080

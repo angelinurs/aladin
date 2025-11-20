@@ -1,0 +1,43 @@
+spring:
+  mail:
+    from-custom-domain: admin@amurlab.com
+    host: smtp.daum.net
+    port: 465
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          ssl:
+            enable: true
+          starttls:
+            enable: false
+
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          ssl:
+#            enable: true
+#          starttls:
+#            enable: false
+#          connectiontimeout: 5000
+#          timeout: 5000
+#          writetimeout: 5000
+#    property:
+#      mail.smtp.auth: true
+#      mail.smtp.ssl.enable: true
+#      mail.smtp.ssl.trust: smtp.daum.net
+#      mail.smtp.ssl.protocols: "TLSv1.2 TLSv1.3"
+#      mail.smtp.starttls.enable: true
+#      #      mail.smtp.connectiontimeout: 10000
+#      mail.smtp.timeout: 10000
+#      mail.smtp.writetimeout: 10000
+
+# 디버깅용 로그 설정
+logging:
+  level:
+    org.springframework.mail: DEBUG
+    com.sun.mail.smtp: DEBUG
+

@@ -1,8 +1,7 @@
 package com.korutil.server.service;
 
-import com.korutil.server.dao.user.UserAddressDao;
+import com.korutil.server.repository.dao.user.UserAddressDao;
 import com.korutil.server.dto.common.CommonApiResponse;
-import com.korutil.server.dto.user.UserDto;
 import com.korutil.server.dto.user.record.UserAddressResponse;
 import com.korutil.server.service.security.JwtTokenService;
 import lombok.RequiredArgsConstructor;

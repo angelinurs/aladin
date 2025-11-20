@@ -1,0 +1,24 @@
+spring:
+  devtools:
+    add-properties: false
+  config:
+    import:
+      - classpath:profile/prod/cors.yml
+
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+logging:
+  level:
+    root: WARN
+    kr.co.sc301.medis.crm: INFO                     # 애플리케이션 로그도 INFO로
+    org.springframework: ERROR                      # Spring 관련은 ERROR만
+    org.hibernate.SQL: OFF                          # SQL 로그 완전 OFF
+
+server:
+  port: ${variable.port.prod}
+
+#base-url: http://52.78.181.143
+base-url: http://52.78.181.143:${variable.port.prod}
+front-url: https://www.sc301.co.kr

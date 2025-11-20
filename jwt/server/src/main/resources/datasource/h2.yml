@@ -5,7 +5,7 @@ spring:
       driverClassName: org.h2.Driver
       jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL
       username: naru
-      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
+      password: ENC(DJuiFa7nn4tlfLMCVfgftMZPZnL91JAb4K+rERWkqZznHPItPDRNCj6yBICmGrCP)
 #        password: naru0914
 #
 #  board:
