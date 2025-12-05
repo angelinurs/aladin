@@ -29,8 +29,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
-
 @Slf4j
 @Configuration
 @EnableWebSecurity
@@ -96,8 +94,8 @@ public class SecurityConfig {
                                         "/h2-console/**"
                                 ).permitAll()
                                 .requestMatchers(
-                                        "/users/login",
-                                        "/users/signup"
+                                        "/api/users/login",
+                                        "/api/users/signup"
                                 ).permitAll()
 //                                .requestMatchers("/error","/favicon.ico").permitAll()
                                 // 나머지는 인증 필요
