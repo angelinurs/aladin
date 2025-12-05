@@ -154,7 +154,7 @@ public class UserService {
     @Transactional
     public void changePassword(Long userId, String newPassword) {
         // 사용자 정보 가져오기
-        UserDto userDto = userDao.getUser(userId);
+//        UserDto userDto = userDao.getUser(userId);
 
         // 사용자 인증 정보 가져오기 (현재 비밀번호)
         UserCredentialsDto currentUserCredentialsDto = userCredentialsDao.getUserCredentials(userId);
@@ -198,5 +198,10 @@ public class UserService {
 
     public CommonApiResponse<Boolean> isNotValidUsernameVerification( String username ) {
         return CommonApiResponse.success(userDao.isUserByUsername( username ));
+    }
+
+    public CommonApiResponse<Boolean> existsByEmail( String email ) {
+        return
+                CommonApiResponse.success(userDao.existsByEmail( email ));
     }
 }
