@@ -1,13 +1,11 @@
 package com.korutil.server.controller;
 
 import com.korutil.server.dto.common.CommonApiResponse;
-import com.korutil.server.dto.user.record.MemberResponse;
 import com.korutil.server.dto.user.record.*;
 import com.korutil.server.service.AuthService;
 import com.korutil.server.service.TokenUserService;
 import com.korutil.server.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
-import io.swagger.v3.oas.annotations.Parameter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -20,7 +18,7 @@ import java.util.Map;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/users")
 public class UserController {
 
     private final UserService userService;
