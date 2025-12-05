@@ -16,4 +16,6 @@ public interface UserRepository extends JpaRepository<UserEntity, Long> {
 
     // 이메일과 활성 상태가 true인 사용자 찾기
     List<UserEntity> findByEmailAndActivatedTrue(String email);
+
+    boolean existsByEmail(String email);
 }

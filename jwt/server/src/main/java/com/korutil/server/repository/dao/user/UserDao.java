@@ -46,12 +46,13 @@ public class UserDao {
 
     @Transactional
     public UserEntity createUser(UserDto dto) {
-        userRepository.findByEmail(dto.getEmail()).ifPresent( email -> {
-                    throw new CustomRuntimeException(ErrorCode.ALREADY_EXIST_EMAIL);
-        });
+        if(userRepository.existsByEmail(dto.getEmail())) {
+            throw new CustomRuntimeException(ErrorCode.ALREADY_EXIST_EMAIL);
+        }
+
         UserEntity entity = UserEntity.fromDto(dto);
-        UserEntity savedEntity = userRepository.save(entity);
-        return savedEntity;
+
+        return userRepository.save(entity);
     }
 
     @Transactional
@@ -70,5 +71,10 @@ public class UserDao {
                 UserEntity::softDelete,
                 () -> { throw new CustomRuntimeException(ErrorCode.NOT_FOUND_USER); }
         );
+    }
+
+    public boolean existsByEmail(String email) {
+        return
+                userRepository.existsByEmail(email);
     }
 }
