@@ -15,7 +15,7 @@ import java.util.stream.Collectors;
 @Builder
 public class EmailVerificationDto {
 
-    public static final String SIGNUP_SUBJECT = "Korutils 가입 이메일 인증 코드입니다.";
+    public static final String SIGNUP_SUBJECT = "Amurlab.com 가입 이메일 인증 코드입니다.";
 
     private String token;  // 인증 토큰 (랜덤 문자열)
     private String email;  // 인증 토큰 (랜덤 문자열)
