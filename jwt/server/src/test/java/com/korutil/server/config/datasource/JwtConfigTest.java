@@ -22,7 +22,7 @@ class JwtConfigTest {
     @Autowired private JwtEncoder jwtEncoder;
     @Autowired private JwtDecoder jwtDecoder;
 
-    private final String secretKey = "ymyzWpOOhXnd/ElWJ8ZUKnr3+IDfZcQhFuoaM5L6AJI=";
+    private final String secretKey = "dGVzdC1vbmx5LWtleS1mb3ItdW5pdC10ZXN0cy0zMmI="; // 테스트 전용 더미 키 (32 bytes)
 
     @DisplayName("[1] 빈 생성 테스트")
     @Test
