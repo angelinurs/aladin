@@ -12,8 +12,8 @@ class UserEntityDatasourceConfigTest {
     @DisplayName("jasypt 암호화/복호화")
     void encodeByJasypt() {
 
-        String dbPassword = "naru0914";
-        String jasyptPassword = "korutil";
+        String dbPassword = "test-db-password";
+        String jasyptPassword = "test-jasypt-key";
         String algorithm = "PBEWithHMACSHA512AndAES_256";
 
         // 암호화 설정

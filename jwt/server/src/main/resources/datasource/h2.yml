@@ -6,7 +6,7 @@ spring:
       jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL
       username: naru
       password: ENC(DJuiFa7nn4tlfLMCVfgftMZPZnL91JAb4K+rERWkqZznHPItPDRNCj6yBICmGrCP)
-#        password: naru0914
+#        password: ${H2_CONSOLE_PASSWORD:changeme}
 #
 #  board:
 #    datasource:
@@ -14,7 +14,7 @@ spring:
 #      jdbc-url: jdbc:h2:mem:test;NON_KEYWORDS=member,user;MODE=MySQL;SCHEMA=board
 #      username: naru
 #      password: ENC(CddzO00HKA0jR4xvjbejXQ2v9kxf7X88jm1AHVqoNNNb2RrdwMALQrPuEtHGT1Ve)
-##        password: naru0914
+##        password: ${H2_CONSOLE_PASSWORD:changeme}
 
   h2:
     console:
@@ -22,7 +22,7 @@ spring:
       jdbc-url: jdbc:h2:mem:test
       # 127.0.0.1:18080/h2-console
       username: naru
-      password: naru0914
+      password: ${H2_CONSOLE_PASSWORD:changeme}
       path: /h2-console
       settings:
         web-allow-others: true
